@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ordersms-deployment
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ordersms-app
+  template:
+    metadata:
+      labels:
+        app: ordersms-app
+    spec:
+      containers:
+        - name: ordersms-app
+          image: ramachandrampm/argocd-ordersms:latest
+          ports:
+            - containerPort: 3002
+          env:
+            - name: MONGO_URL
+              value: mongodb://mongodb:27017/microdb
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ordersms-service
+  namespace: dev
+spec:
+  selector:
+    app: ordersms-app
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ordersms-hpa
+  namespace: dev
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ordersms-deployment
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 50
+
