@@ -1,0 +1,5 @@
+minikube-linux-amd64
+*.tar
+*.zip
+*.log
+node_modules/
