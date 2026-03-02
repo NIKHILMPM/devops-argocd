@@ -10,7 +10,7 @@ function App() {
       const res = await axios.get("/api/users");
       setUsers(res.data);
     } catch (err) {
-      console.error("Error while fetching the users:", err);
+      console.error("Errorfetching users:", err);
     }
   };
 
