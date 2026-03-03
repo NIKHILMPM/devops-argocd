@@ -38,7 +38,7 @@ pipeline {
 
                         allServices.each { service ->
                             buildPushAndUpdateManifest(
-                                "github-cred",
+                                "github-creds",
                                 "dockerhub-creds",
                                 "ramachandrampm",
                                 service,
@@ -62,7 +62,7 @@ pipeline {
                                 echo "Building changed service: ${service}"
 
                                 buildPushAndUpdateManifest(
-                                    "github-cred",
+                                    "github-creds",
                                     "dockerhub-creds",
                                     "ramachandrampm",
                                     service,
