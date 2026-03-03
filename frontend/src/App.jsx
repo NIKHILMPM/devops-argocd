@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>Sample DevOps Microservices App using Argocd and gitops!!!! 😎</h1>
+      <h1>Sample DevOps Microservices App using Argocd 😎!!!!!</h1>
 
       <input
         value={name}
