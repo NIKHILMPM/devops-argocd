@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: frontend-app
-        image: ramachandrampm/argocd-frontend:9
+        image: ramachandrampm/argocd-frontend:5
         ports:
         - containerPort: 5173
 ---
