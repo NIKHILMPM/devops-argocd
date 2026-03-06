@@ -3,3 +3,9 @@ minikube-linux-amd64
 *.zip
 *.log
 node_modules/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
