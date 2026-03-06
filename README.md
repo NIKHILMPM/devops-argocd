@@ -1,1 +1,1 @@
-the is the devops project.
+the is the devops project
