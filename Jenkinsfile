@@ -5,6 +5,7 @@ pipeline {
 
     stages {
 
+        
         stage('Trigger Check') {
             steps {
                 echo "Pipeline triggered for build #${env.BUILD_NUMBER}"
